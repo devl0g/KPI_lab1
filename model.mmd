@@ -1,3 +1,4 @@
+
 erDiagram
     user {
         number user_id PK
@@ -23,19 +24,29 @@ erDiagram
         string community_role
     }
 
-    message {
+    personalMessage {
         number message_id PK
         number author_id FK
         string text_content
-        number recipient_id FK "nullable, for personal message"
-        number community_id FK "nullable, for community message"
+        number recipient_id FK
+        number replies_to_id FK "nullable"
+    }
+
+    communityMessage {
+        number message_id PK
+        number author_id FK
+        string text_content
+        number community_id FK
         number replies_to_id FK "nullable"
     }
 
     user ||--o{ community : "owns"
     user ||--o{ membership : "joins"
-    user ||--o{ message : "sends"
-    user ||--o{ message : "receives personal"
+    user ||--o{ communityMessage : "sends"
+    user ||--o{ personalMessage : "sends"
+    user ||--o{ personalMessage : "receives personal"
     community ||--o{ membership : "has"
-    community ||--o{ message : "contains"
-    message ||--o{ message : "replies to"
+    community ||--o{ communityMessage : "contains"
+    personalMessage ||--o{ personalMessage : "replies to"
+    communityMessage ||--o{ communityMessage : "replies to"
+
