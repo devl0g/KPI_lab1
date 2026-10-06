@@ -1,4 +1,3 @@
-
 erDiagram
     user {
         number user_id PK
@@ -6,6 +5,7 @@ erDiagram
         string avatar_url
         string status
         string platform_role
+        time joined_at
     }
 
     community {
@@ -16,6 +16,7 @@ erDiagram
         string avatar_url
         string status
         number owner_id FK
+        time created_at
     }
 
     membership {
@@ -30,6 +31,8 @@ erDiagram
         string text_content
         number recipient_id FK
         number replies_to_id FK "nullable"
+        time created_at
+        time edited_at "nullable"
     }
 
     communityMessage {
@@ -38,6 +41,8 @@ erDiagram
         string text_content
         number community_id FK
         number replies_to_id FK "nullable"
+        time created_at
+        time edited_at "nullable"
     }
 
     user ||--o{ community : "owns"
