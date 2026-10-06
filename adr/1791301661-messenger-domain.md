@@ -3,9 +3,7 @@ parent: Decisions
 title: Choose messenger domain
 
 status: "accepted"
-decision-makers: me
-consulted: me one time more
-informed: that's me
+decision-makers: Illia Diadenchuk (@dadencukillia)
 ---
 # Розділення повідомлення через посилання на особисті чати чи спільноти
 
